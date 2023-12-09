@@ -1,11 +1,15 @@
 package com.teena.vimal.devops;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
 
 	private long accountNumber;
 	private String accountType;
 	private double amount;
 	private long customerid;
+	public static List<Account> accountList = new ArrayList<Account>();
 	
 	public Account(long accountNumber, String accountType, double amount,long customerid) {
 		super();
