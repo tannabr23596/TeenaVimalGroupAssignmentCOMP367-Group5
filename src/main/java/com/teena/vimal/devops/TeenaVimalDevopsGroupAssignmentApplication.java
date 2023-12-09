@@ -36,7 +36,7 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
 
         // Create a Customer object
         Customer customer = new Customer(customerId,customerName, phone, emailAddress, password);
-
+        Customer.customerList.add(customer);
        
         System.out.println("Customer Details:");
         System.out.println(customer);
@@ -48,14 +48,15 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
         Random random = new Random();
         long accountid = random.nextLong((99999L - 10000L) + 1L) + 10000L;
         Account account = new Account(accountid,accountType,0,customerId);
-        
+        Account.accountList.add(account);
         boolean exit = false;
 
         while (!exit) {
             System.out.println("\nChoose an option:");
             System.out.println("1. Deposit");
             System.out.println("2. Withdraw");
-            System.out.println("3. Exit");
+            System.out.println("3. Update Profile");
+            System.out.println("4.Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -63,6 +64,7 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
             switch (choice) {
                 case 1:
                     // Deposit
+                	
                     System.out.print("Enter the amount to deposit: ");
                     double depositAmount = scanner.nextDouble();
                     boolean depositSuccess = depositAmount(depositAmount, customer.getCustomerid());
@@ -86,6 +88,11 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
                     }
                     break;
                 case 3:
+                    // Update Customer Information
+                    updateCustomerInfo(customer);
+                    System.out.println("Customer information updated successfully!");
+                    break;
+                case 4:
                     exit = true;
                     System.out.println("Exiting...");
                     break;
@@ -94,7 +101,7 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
                     break;
             }
         }
-        System.out.println("Current amount of the custmer:"+ account.getAmount());
+        System.out.println("Current amount of the customer:"+ account.getAmount());
         
         scanner.close();
 	    
@@ -126,6 +133,39 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
 	       }
 	      return transactionSuccess;
 		}
-		
+	
+	private static void updateCustomerInfo(Customer customer) {
+	    Scanner scanner = new Scanner(System.in);
 
+	    System.out.println("\nUpdate Customer Information:");
+
+	    System.out.print("Do you want to update Phone? (Y/N): ");
+	    String updatePhoneChoice = scanner.nextLine().trim().toLowerCase();
+
+	    if (updatePhoneChoice.equals("y")) {
+	        System.out.print("New Phone: ");
+	        String newPhone = scanner.nextLine();
+	        customer.setPhone(newPhone);
+	    }
+
+	    System.out.print("Do you want to update Email Address? (Y/N): ");
+	    String updateEmailChoice = scanner.nextLine().trim().toLowerCase();
+
+	    if (updateEmailChoice.equals("y")) {
+	        System.out.print("New Email Address: ");
+	        String newEmail = scanner.nextLine();
+	        customer.setEmailAddress(newEmail);
+	    }
+
+	    System.out.print("Do you want to update Password? (Y/N): ");
+	    String updatePasswordChoice = scanner.nextLine().trim().toLowerCase();
+
+	    if (updatePasswordChoice.equals("y")) {
+	        System.out.print("New Password: ");
+	        String newPassword = scanner.nextLine();
+	        customer.setPassword(newPassword);
+	    }
+
+	   
+	}
 }
