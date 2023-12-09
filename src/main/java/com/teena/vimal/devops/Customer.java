@@ -1,5 +1,8 @@
 package com.teena.vimal.devops;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
 
 	private long customerid;
@@ -7,6 +10,7 @@ public class Customer {
 	private String emailAddress;
 	private String phone;
 	private String password;
+	public static List<Customer> customerList = new ArrayList<Customer>();
 	public Customer(long customerid, String customername, String emailAddress, String phone,String password) {
 		super();
 		this.customerid = customerid;
@@ -44,6 +48,11 @@ public class Customer {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "Customer [customerid=" + customerid + ", customername=" + customername + ", emailAddress="
+				+ emailAddress + ", phone=" + phone + "]";
 	}
 	
 	
