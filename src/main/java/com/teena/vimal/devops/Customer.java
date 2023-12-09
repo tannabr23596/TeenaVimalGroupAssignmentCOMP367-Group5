@@ -6,12 +6,14 @@ public class Customer {
 	private String customername;
 	private String emailAddress;
 	private String phone;
-	public Customer(long customerid, String customername, String emailAddress, String phone) {
+	private String password;
+	public Customer(long customerid, String customername, String emailAddress, String phone,String password) {
 		super();
 		this.customerid = customerid;
 		this.customername = customername;
 		this.emailAddress = emailAddress;
 		this.phone = phone;
+		this.password = password;
 	}
 	public long getCustomerid() {
 		return customerid;
@@ -37,6 +39,13 @@ public class Customer {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
    
 }
