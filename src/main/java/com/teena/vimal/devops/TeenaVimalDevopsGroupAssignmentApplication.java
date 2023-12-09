@@ -142,7 +142,7 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
 	    System.out.print("Do you want to update Phone? (Y/N): ");
 	    String updatePhoneChoice = scanner.nextLine().trim().toLowerCase();
 
-	    if (updatePhoneChoice.equals("y")) {
+	    if (updatePhoneChoice.equalsIgnoreCase("Y")) {
 	        System.out.print("New Phone: ");
 	        String newPhone = scanner.nextLine();
 	        customer.setPhone(newPhone);
@@ -151,7 +151,7 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
 	    System.out.print("Do you want to update Email Address? (Y/N): ");
 	    String updateEmailChoice = scanner.nextLine().trim().toLowerCase();
 
-	    if (updateEmailChoice.equals("y")) {
+	    if (updateEmailChoice.equalsIgnoreCase("Y") ) {
 	        System.out.print("New Email Address: ");
 	        String newEmail = scanner.nextLine();
 	        customer.setEmailAddress(newEmail);
@@ -160,7 +160,7 @@ public class TeenaVimalDevopsGroupAssignmentApplication {
 	    System.out.print("Do you want to update Password? (Y/N): ");
 	    String updatePasswordChoice = scanner.nextLine().trim().toLowerCase();
 
-	    if (updatePasswordChoice.equals("y")) {
+	    if (updatePasswordChoice.equalsIgnoreCase("Y")) {
 	        System.out.print("New Password: ");
 	        String newPassword = scanner.nextLine();
 	        customer.setPassword(newPassword);
