@@ -44,14 +44,10 @@ pipeline {
 		stage('Deliver') {
             steps {
                 script {
-                    // Fetch the path to Maven installation by its label 'Maven3'
-                    def mavenHome = tool 'Maven3'
-                    def mvnCmd = "${mavenHome}/bin/mvn" // Maven executable
-                    
-                    // Now 'mvnCmd' holds the full path to Maven executable
-                    sh "${mvnCmd} --version" 
-                    // ...
-                }
+                  def mvnCmd = tool 'Maven3' // Maven executable
+                   // Now 'mvnCmd' holds the configured Maven tool
+                   sh "${mvnCmd} --version" 
+                 }
             }
 		}
     }
