@@ -5,6 +5,9 @@ pipeline {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "Maven3"
     }
+	environment {
+        DEPLOY_ENVIRONMENT = 'dev' 
+    } 
 
     stages {
         stage('Build') {
@@ -41,7 +44,7 @@ pipeline {
 			   }
             }
         }
-		stage('Deliver') {
+		stage('Delivery') {
             steps {
                 script {
                  def mvnCmd = tool "Maven3" // Maven executable
@@ -53,5 +56,20 @@ pipeline {
                  }
             }
 		}
+		stage('Deploy to Dev Env') {
+          when {
+             expression { env.DEPLOY_ENVIRONMENT == 'dev' }
+             }
+            steps {
+               script {
+                   if (env.DEPLOY_ENVIRONMENT == 'dev') {
+                     echo "Deploying to Dev environment"
+                     // Deployment steps for Dev environment
+                  } else {
+                        echo "Skipping deployment to Dev environment"
+                      }
+               }
+             }
+           }
     }
 }
