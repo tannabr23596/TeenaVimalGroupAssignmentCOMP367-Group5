@@ -27,7 +27,8 @@ pipeline {
                     archiveArtifacts 'target/*.jar'
                 }
             }
-			stage('Test') {
+        }
+		stage('Test') {
             steps {
                
                 bat "mvn test"
@@ -37,7 +38,6 @@ pipeline {
                 
                 junit '**/target/surefire-reports/TEST-*.xml'
             }
-        }
         }
     }
 }
