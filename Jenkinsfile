@@ -45,9 +45,11 @@ pipeline {
             steps {
                 script {
                  def mvnCmd = tool "Maven3" // Maven executable
+				 def mvnCmdBin = "${mvnCmd}/bin/mvn"
 
             // Print Maven tool path for debugging
             echo "Maven executable path: ${mvnCmd}"
+			 echo "${mvnCmdBin} release:prepare release:perform"
                  }
             }
 		}
