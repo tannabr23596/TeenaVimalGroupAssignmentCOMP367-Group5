@@ -27,6 +27,17 @@ pipeline {
                     archiveArtifacts 'target/*.jar'
                 }
             }
+			stage('Test') {
+            steps {
+               
+                bat "mvn test"
+                
+            }
+            post {
+                
+                junit '**/target/surefire-reports/TEST-*.xml'
+            }
+        }
         }
     }
 }
