@@ -6,7 +6,7 @@ pipeline {
         maven "Maven3"
     }
 	environment {
-        DEPLOY_ENVIRONMENT = 'dev' 
+        DEPLOY_ENVIRONMENT = 'staging' 
     } 
 
     stages {
@@ -56,7 +56,7 @@ pipeline {
                  }
             }
 		}
-		stage('Deploy to Dev Env') {
+		stage('Development Env') {
           when {
              expression { env.DEPLOY_ENVIRONMENT == 'dev' }
              }
@@ -67,6 +67,51 @@ pipeline {
                      // Deployment steps for Dev environment
                   } else {
                         echo "Skipping deployment to Dev environment"
+                      }
+               }
+             }
+           }
+		   stage('QA Env') {
+          when {
+             expression { env.DEPLOY_ENVIRONMENT == 'qa' }
+             }
+            steps {
+               script {
+                   if (env.DEPLOY_ENVIRONMENT == 'qa') {
+                     echo "Deploying to QA environment"
+                     // Deployment steps for QA environment
+                  } else {
+                        echo "Skipping deployment to QA environment"
+                      }
+               }
+             }
+           }
+		    stage('Staging Env') {
+          when {
+             expression { env.DEPLOY_ENVIRONMENT == 'staging' }
+             }
+            steps {
+               script {
+                   if (env.DEPLOY_ENVIRONMENT == 'staging') {
+                     echo "Deploying to Staging environment"
+                     // Deployment steps for Staging environment
+                  } else {
+                        echo "Skipping deployment to Staging environment"
+                      }
+               }
+             }
+           }
+		      stage('Production Env') {
+          when {
+             expression { env.DEPLOY_ENVIRONMENT == 'production' }
+             }
+            steps {
+               script {
+                   if (env.DEPLOY_ENVIRONMENT == 'production') {
+                     echo "Deploying to Production environment"
+                     // Deployment steps for Production environment
+                  } else {
+                        echo "Skipping deployment to Production environment"
                       }
                }
              }
