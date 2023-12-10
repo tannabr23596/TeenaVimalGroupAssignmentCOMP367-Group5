@@ -44,9 +44,10 @@ pipeline {
 		stage('Deliver') {
             steps {
                 script {
-                  def mvnCmd = tool 'Maven3' // Maven executable
-                   // Now 'mvnCmd' holds the configured Maven tool
-                   sh "${mvnCmd} --version" 
+                 def mvnCmd = tool "Maven3" // Maven executable
+
+            // Print Maven tool path for debugging
+            echo "Maven executable path: ${mvnCmd}"
                  }
             }
 		}
