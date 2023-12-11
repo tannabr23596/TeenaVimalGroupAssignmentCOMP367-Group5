@@ -6,7 +6,7 @@ pipeline {
         maven "Maven3"
     }
 	environment {
-        DEPLOY_ENVIRONMENT = 'staging' 
+        DEPLOY_ENVIRONMENT = 'dev' 
     } 
 
     stages {
